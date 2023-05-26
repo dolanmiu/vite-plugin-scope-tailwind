@@ -10,6 +10,12 @@ Love using TailwindCSS? Other people also love using TailwindCSS? Trying to mix 
 
 - Another solution would be to [make the parent app important](https://stackoverflow.com/a/65907678). But this is an anti-pattern, and is a leaky abstraction. It is not feasible to tell all the consumers of your library to do this as a pre-requisite.
 
+## Installation
+
+```bash
+npm i vite-plugin-scope-tailwind -D
+```
+
 ## Usage
 
 `vite-plugin-scope-tailwind` to the rescue!
