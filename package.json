@@ -1,0 +1,36 @@
+{
+  "name": "vite-plugin-scope-tailwind",
+  "description": "A vite-plugin to encapsulate and scope your TailwindCSS styles to your library and prevent them affecting styles outside",
+  "private": true,
+  "version": "0.0.0",
+  "main": "dist/cjs/index.js",
+  "module": "dist/es/index.js",
+  "types": "dist/main.d.ts",
+  "files": [
+    "dist"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/main.d.ts",
+      "import": "./dist/es/index.js",
+      "default": "./dist/cjs/index.js"
+    }
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build"
+  },
+  "devDependencies": {
+    "@types/node": "^20.2.4",
+    "postcss": "^8.4.23",
+    "typescript": "^5.0.2",
+    "vite": "^4.3.2",
+    "vite-plugin-dts": "^2.3.0",
+    "vite-tsconfig-paths": "^4.2.0"
+  },
+  "dependencies": {
+    "@types/uniqid": "^5.3.2",
+    "app-root-path": "^3.1.0",
+    "uniqid": "^5.4.0"
+  }
+}
