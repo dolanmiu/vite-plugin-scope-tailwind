@@ -9,7 +9,10 @@ import { appendClass, appendClassForReact } from "./append-classes";
 
 const id = uniqid("d");
 
-const plugin = ({ react = false }: { react?: boolean } = {}): Plugin => ({
+const plugin = ({
+  react = false,
+  ignore = [],
+}: { react?: boolean; ignore?: RegExp | RegExp[] } = {}): Plugin => ({
   name: "vite-plugin-scope-tailwind",
   config: (config) => {
     const currentPostCssPlugins =
@@ -24,7 +27,7 @@ const plugin = ({ react = false }: { react?: boolean } = {}): Plugin => ({
             ...postCssPluginsToArray(postCssConfigFile).map((f) =>
               require(path.join(process.cwd(), "node_modules", f))
             ),
-            prefixPlugin({ prefix: `${id}.`, ignore: [] }),
+            prefixPlugin({ prefix: `${id}.`, ignore }),
           ],
         },
       },
