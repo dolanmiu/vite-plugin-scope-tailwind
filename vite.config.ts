@@ -12,6 +12,7 @@ export default defineConfig({
     }),
   ],
   build: {
+    sourcemap: true,
     lib: {
       entry: resolve("src", "main.ts"),
       name: "vite-plugin-scope-tailwind",
