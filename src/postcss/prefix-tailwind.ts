@@ -70,5 +70,3 @@ export const prefixPlugin = ({
     },
   };
 };
-
-module.exports.postcss = true;
