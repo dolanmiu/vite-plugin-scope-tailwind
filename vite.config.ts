@@ -17,7 +17,16 @@ export default defineConfig({
       entry: resolve("src", "main.ts"),
       name: "vite-plugin-scope-tailwind",
       formats: ["es", "cjs"],
-      fileName: (format) => `${format}/index.js`,
+      fileName: (format) => {
+        switch (format) {
+          case "es":
+            return `${format}/index.mjs`;
+          case "cjs":
+            return `${format}/index.cjs`;
+          default:
+            return "index.js";
+        }
+      },
     },
     rollupOptions: {
       external: ["fs", "path"],
