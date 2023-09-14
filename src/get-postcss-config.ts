@@ -20,7 +20,10 @@ export const getPostCssConfig = (): any | undefined => {
   } catch {}
 
   return {
-    plugins: {},
+    plugins: {
+      tailwindcss: {},
+      autoprefixer: {},
+    },
   };
 };
 
