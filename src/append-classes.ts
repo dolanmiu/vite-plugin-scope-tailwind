@@ -1,5 +1,4 @@
 export const appendClassForReact = (id: string) => (code: string) => {
-  console.log(code);
   const regex = /className/g;
   const found = code.match(regex);
   if (found) {
