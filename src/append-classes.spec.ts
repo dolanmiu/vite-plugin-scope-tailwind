@@ -4,7 +4,7 @@ import { COMPILED_JSX, COMPILED_BACK_TICK_JSX } from "@/mocks/compiled-jsx";
 
 import { appendClassForReact } from "./append-classes";
 
-describe("my-awesome-tests", () => {
+describe("append-classes", () => {
   describe("appendClassForReact", () => {
     it("should work", async () => {
       const transformedCode = appendClassForReact("test-id")(COMPILED_JSX);
