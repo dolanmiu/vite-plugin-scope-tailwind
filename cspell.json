@@ -1,0 +1,9 @@
+{
+  "version": "0.2",
+  "language": "en",
+  "dictionaries": ["en_US", "softwareTerms", "typescript", "companies"],
+  "ignoreRegExpList": [],
+  "ignorePaths": [".vscode", "dist", "coverage", ".gitignore"],
+  "allowCompoundWords": true,
+  "words": ["cobertura", "uniqid"]
+}

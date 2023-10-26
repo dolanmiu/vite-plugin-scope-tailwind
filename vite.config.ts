@@ -1,5 +1,4 @@
-/// <reference types="vite/client" />
-import { defineConfig } from "vite";
+import { defineConfig } from "vitest/config";
 import { resolve } from "path";
 import tsConfigPaths from "vite-tsconfig-paths";
 import dts from "vite-plugin-dts";
@@ -31,5 +30,21 @@ export default defineConfig({
     rollupOptions: {
       external: ["fs", "path"],
     },
+  },
+  test: {
+    globals: true,
+    coverage: {
+      provider: "v8",
+      reportsDirectory: "coverage",
+      enabled: true,
+      reporter: ["text", "cobertura", "html"],
+      statements: 100,
+      branches: 100,
+      functions: 100,
+      lines: 100,
+      exclude: ["**/src/test/**", "**/*.test.{ts,tsx}"],
+    },
+    reporters: ["default"],
+    testTimeout: 60000,
   },
 });

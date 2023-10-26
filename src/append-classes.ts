@@ -1,8 +1,11 @@
 export const appendClassForReact = (id: string) => (code: string) => {
+  console.log(code);
   const regex = /className/g;
   const found = code.match(regex);
   if (found) {
-    const c = code.replace(/className: "/g, `className: "${id} `);
+    const c = code
+      .replace(/className: "/g, `className: "${id} `)
+      .replace(/className: `/g, `className: \`${id} `);
     return c;
   } else {
     return code;
