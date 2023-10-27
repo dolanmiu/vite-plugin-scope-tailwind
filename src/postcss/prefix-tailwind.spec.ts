@@ -24,7 +24,7 @@ describe("prefixPlugin", () => {
 
     const walkRules = vi.fn();
 
-    output.Root({
+    (output as any).Root({
       walkRules,
     });
 

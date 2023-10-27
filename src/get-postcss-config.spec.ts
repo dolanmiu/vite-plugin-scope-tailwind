@@ -1,4 +1,4 @@
-import { vi, describe, it, expect, afterAll, vitest, afterEach } from "vitest";
+import { describe, it, expect } from "vitest";
 
 import { getPostCssConfig, postCssPluginsToArray } from "./get-postcss-config";
 
