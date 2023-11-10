@@ -1,22 +1,28 @@
 import path from "path";
 
-export const getPostCssConfig = (): any | undefined => {
+type PostCssConfig = {
+  plugins: {
+    [key: string]: any;
+  };
+};
+
+export const getPostCssConfig = (): PostCssConfig => {
   try {
     const file = require(path.join(process.cwd(), "postcss.config.js"));
 
-    return file;
+    return fileToConfig(file);
   } catch {}
 
   try {
     const file = require(path.join(process.cwd(), "postcss.config.cjs"));
 
-    return file;
+    return fileToConfig(file);
   } catch {}
 
   try {
     const file = require(path.join(process.cwd(), "postcss.config.json"));
 
-    return file;
+    return fileToConfig(file);
   } catch {}
 
   return {
@@ -27,6 +33,14 @@ export const getPostCssConfig = (): any | undefined => {
   };
 };
 
-export const postCssPluginsToArray = (config: { plugins: any }): string[] => {
+export const postCssPluginsToArray = (config: PostCssConfig): string[] => {
   return Object.keys(config.plugins);
+};
+
+const fileToConfig = (file: any): PostCssConfig => {
+  if (file.default) {
+    return file.default();
+  }
+
+  return file;
 };
