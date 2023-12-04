@@ -50,7 +50,7 @@ export default defineConfig({
 ```ts
 {
     react: boolean // If your app is a React app
-    ignore: RegExp | RegExp[] // If you want to exclude some classes from being scoped
+    ignore: RegExp | RegExp[] | string | string[] // If you want to exclude some classes from being scoped
 }
 ```
 
