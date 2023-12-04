@@ -40,7 +40,7 @@ export default defineConfig({
       reporter: ["text", "cobertura", "html"],
       statements: 86.06,
       branches: 93.75,
-      functions: 80.00,
+      functions: 80.0,
       lines: 86.06,
       exclude: ["**/src/test/**", "**/*.test.{ts,tsx}"],
     },

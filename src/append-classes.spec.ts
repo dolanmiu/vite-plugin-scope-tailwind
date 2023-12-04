@@ -12,7 +12,7 @@ describe("append-classes", () => {
       expect(transformedCode).toEqual(
         expect.objectContaining({
           code: expect.stringContaining(`className: "test-id `),
-        })
+        }),
       );
     });
 
@@ -21,18 +21,18 @@ describe("append-classes", () => {
       expect(transformedCode).toEqual(
         expect.objectContaining({
           code: expect.stringContaining(`className: "test-id `),
-        })
+        }),
       );
     });
 
     it("should work for back ticks", async () => {
       const transformedCode = appendClassForReact("test-id")(
-        COMPILED_BACK_TICK_JSX
+        COMPILED_BACK_TICK_JSX,
       );
       expect(transformedCode).toEqual(
         expect.objectContaining({
           code: expect.stringContaining("className: `test-id "),
-        })
+        }),
       );
     });
   });
@@ -43,7 +43,7 @@ describe("append-classes", () => {
       expect(transformedCode).toEqual(
         expect.objectContaining({
           code: expect.stringContaining(`class="test-id `),
-        })
+        }),
       );
     });
   });

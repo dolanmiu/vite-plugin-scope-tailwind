@@ -7,7 +7,7 @@ import { AcceptedPlugin } from "postcss";
  */
 const classMatchesTest = (
   cssClass: string,
-  test: RegExp | RegExp[] | string | string[]
+  test: RegExp | RegExp[] | string | string[],
 ): boolean => {
   cssClass = cssClass.trim();
 
