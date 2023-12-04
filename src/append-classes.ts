@@ -5,9 +5,15 @@ export const appendClassForReact = (id: string) => (code: string) => {
     const c = code
       .replace(/className: "/g, `className: "${id} `)
       .replace(/className: `/g, `className: \`${id} `);
-    return c;
+    return {
+      code: c,
+      map: null,
+    };
   } else {
-    return code;
+    return {
+      code,
+      map: null,
+    };
   }
 };
 
@@ -16,8 +22,14 @@ export const appendClass = (id: string) => (code: string) => {
   const found = code.match(regex);
   if (found) {
     const c = code.replace(/class: "/g, `class: "${id} `);
-    return c;
+    return {
+      code: c,
+      map: null,
+    };
   } else {
-    return code;
+    return {
+      code,
+      map: null,
+    };
   }
 };
