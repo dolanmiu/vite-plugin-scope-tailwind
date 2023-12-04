@@ -1,5 +1,12 @@
 # vite-plugin-scope-tailwind
 
+[![NPM version][npm-image]][npm-url]
+[![Downloads per month][downloads-image]][downloads-url]
+[![GitHub Action Workflow Status][github-actions-workflow-image]][github-actions-workflow-url]
+[![Known Vulnerabilities][snky-image]][snky-url]
+[![PRs Welcome][pr-image]][pr-url]
+[![codecov][codecov-image]][codecov-url]
+
 > Encapsulate and scope your TailwindCSS styles to your library and prevent them affecting styles outside.
 
 Love using TailwindCSS? Other people also love using TailwindCSS? Trying to mix them together? Usually this leads to problems as the tailwind classes such as `flex`, `bg-red-500` will clash and change specificity.
@@ -50,3 +57,16 @@ export default defineConfig({
 ---
 
 Made with ❤️
+
+[npm-image]: https://badge.fury.io/js/vite-plugin-scope-tailwind.svg
+[npm-url]: https://npmjs.org/package/vite-plugin-scope-tailwind
+[downloads-image]: https://img.shields.io/npm/dm/vite-plugin-scope-tailwind.svg
+[downloads-url]: https://npmjs.org/package/vite-plugin-scope-tailwind
+[github-actions-workflow-image]: https://github.com/dolanmiu/vite-plugin-scope-tailwind/workflows/Default/badge.svg
+[github-actions-workflow-url]: https://github.com/dolanmiu/vite-plugin-scope-tailwind/actions
+[snky-image]: https://snyk.io/test/github/dolanmiu/vite-plugin-scope-tailwind/badge.svg
+[snky-url]: https://snyk.io/test/github/dolanmiu/vite-plugin-scope-tailwind
+[pr-image]: https://img.shields.io/badge/PRs-welcome-brightgreen.svg
+[pr-url]: http://makeapullrequest.com
+[codecov-image]: https://codecov.io/gh/dolanmiu/vite-plugin-scope-tailwind/branch/master/graph/badge.svg
+[codecov-url]: https://codecov.io/gh/dolanmiu/vite-plugin-scope-tailwind

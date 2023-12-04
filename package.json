@@ -17,6 +17,31 @@
     "prettier": "prettier -l .",
     "prettier:fix": "npm run prettier -- --write ."
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dolanmiu/vite-plugin-scope-tailwind.git"
+  },
+  "bugs": {
+    "url": "https://github.com/dolanmiu/vite-plugin-scope-tailwind/issues"
+  },
+  "author": "Dolan Miu",
+  "license": "MIT",
+  "keywords": [
+    "tailwind",
+    "tailwindcss",
+    "vite",
+    "vite-plugin",
+    "vite-plugin-tailwind",
+    "vite-plugin-scope-tailwind",
+    "scope",
+    "encapsulate",
+    "library",
+    "css",
+    "styles",
+    "style",
+    "css-in-js",
+    "css-in-jsx"
+  ],
   "devDependencies": {
     "@types/node": "^20.2.4",
     "@vitest/coverage-v8": "^0.34.6",

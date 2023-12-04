@@ -5,5 +5,5 @@
   "ignoreRegExpList": [],
   "ignorePaths": [".vscode", "dist", "coverage", ".gitignore"],
   "allowCompoundWords": true,
-  "words": ["cobertura", "uniqid"]
+  "words": ["cobertura", "codecov", "Dolan", "uniqid"]
 }
