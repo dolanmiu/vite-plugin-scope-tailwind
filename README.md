@@ -62,7 +62,7 @@ Made with ❤️
 [npm-url]: https://npmjs.org/package/vite-plugin-scope-tailwind
 [downloads-image]: https://img.shields.io/npm/dm/vite-plugin-scope-tailwind.svg
 [downloads-url]: https://npmjs.org/package/vite-plugin-scope-tailwind
-[github-actions-workflow-image]: https://github.com/dolanmiu/vite-plugin-scope-tailwind/workflows/Default/badge.svg
+[github-actions-workflow-image]: https://github.com/dolanmiu/vite-plugin-scope-tailwind/workflows/Tests%20&%20Build/badge.svg
 [github-actions-workflow-url]: https://github.com/dolanmiu/vite-plugin-scope-tailwind/actions
 [snky-image]: https://snyk.io/test/github/dolanmiu/vite-plugin-scope-tailwind/badge.svg
 [snky-url]: https://snyk.io/test/github/dolanmiu/vite-plugin-scope-tailwind
