@@ -21,7 +21,9 @@ export const appendClass = (id: string) => (code: string) => {
   const regex = /class/g;
   const found = code.match(regex);
   if (found) {
-    const c = code.replace(/class: "/g, `class: "${id} `);
+    const c = code
+      .replace(/class: "/g, `class: "${id} `)
+      .replace(/class="/g, `class="${id} `);
     return {
       code: c,
       map: null,
