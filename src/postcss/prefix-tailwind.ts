@@ -5,15 +5,18 @@ import { AcceptedPlugin } from "postcss";
  * @param {string} cssClass
  * @param {RegExp | RegExp[]} test
  */
-function classMatchesTest(cssClass: string, test: RegExp | RegExp[]) {
-  if (!test) {
-    return false;
-  }
-
+const classMatchesTest = (
+  cssClass: string,
+  test: RegExp | RegExp[] | string | string[]
+): boolean => {
   cssClass = cssClass.trim();
 
   if (test instanceof RegExp) {
-    return test.exec(cssClass);
+    return !!test.exec(cssClass);
+  }
+
+  if (typeof test === "string") {
+    return cssClass === test;
   }
 
   if (Array.isArray(test)) {
@@ -25,17 +28,20 @@ function classMatchesTest(cssClass: string, test: RegExp | RegExp[]) {
         return cssClass === t;
       }
     });
+    /* c8 ignore next */
   }
-
+  /* c8 ignore next 4 */
+  // This will never happen so it is safe to ignore
+  // Deleting it will change the return type of the function
   return cssClass === test;
-}
+};
 
 export const prefixPlugin = ({
   prefix,
   ignore,
 }: {
   prefix: string;
-  ignore: RegExp | RegExp[];
+  ignore: RegExp | RegExp[] | string | string[];
 }): AcceptedPlugin => {
   return {
     postcssPlugin: "prefix-tailwind-classes",
