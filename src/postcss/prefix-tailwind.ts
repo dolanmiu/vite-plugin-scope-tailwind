@@ -1,5 +1,5 @@
 import { AcceptedPlugin } from "postcss";
-import { isTailwindEdgeCase, splitClassNames } from "./tailwind-edgecases";
+import { splitClassNames } from "./tailwind-edgecases";
 /**
  * Determine if class passes test
  *
