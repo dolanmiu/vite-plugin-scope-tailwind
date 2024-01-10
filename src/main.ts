@@ -12,14 +12,14 @@ const id = uniqid("d");
 
 const appendForReact = (id: string) => (code: string) => {
   return {
-    code: appendTagsForReact(id)(appendClassForReact(id)(code).code).code,
+    code: appendClassForReact(id)(appendTagsForReact(id)(code).code).code,
     map: null,
   };
 };
 
 const append = (id: string) => (code: string) => {
   return {
-    code: appendTags(id)(appendClass(id)(code).code).code,
+    code: appendClass(id)(appendTags(id)(code).code).code,
     map: null,
   };
 };
