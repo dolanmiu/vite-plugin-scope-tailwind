@@ -1,5 +1,6 @@
 import { AcceptedPlugin } from "postcss";
 import { splitClassNames } from "./tailwind-edgecases";
+import { PREFLIGHT_AFFECTED_TAGS } from "./preflight";
 /**
  * Determine if class passes test
  *
@@ -56,9 +57,14 @@ export const prefixPlugin = ({
         rule.selectors = rule.selectors.map((selector) => {
           // Is class selector
           if (selector.indexOf(".") !== 0) {
+            // Fix for preflight reset
+            if (PREFLIGHT_AFFECTED_TAGS.has(selector)) {
+              return selector + "." + prefix;
+            }
             return selector;
           }
-          var classes = splitClassNames(selector)
+
+          var classes = splitClassNames(selector);
 
           return classes
             .map((cssClass) => {

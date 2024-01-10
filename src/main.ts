@@ -6,8 +6,23 @@ import uniqid from "uniqid";
 import { getPostCssConfig, postCssPluginsToArray } from "./get-postcss-config";
 import { prefixPlugin } from "./postcss/prefix-tailwind";
 import { appendClass, appendClassForReact } from "./append-classes";
+import { appendTags, appendTagsForReact } from "./append-tags";
 
 const id = uniqid("d");
+
+const appendForReact = (id: string) => (code: string) => {
+  return {
+    code: appendTagsForReact(id)(appendClassForReact(id)(code).code).code,
+    map: null,
+  };
+};
+
+const append = (id: string) => (code: string) => {
+  return {
+    code: appendTags(id)(appendClass(id)(code).code).code,
+    map: null,
+  };
+};
 
 const plugin = ({
   react = false,
@@ -33,7 +48,7 @@ const plugin = ({
       },
     };
   },
-  transform: react ? appendClassForReact(id) : appendClass(id),
+  transform: react ? appendForReact(id) : append(id),
 });
 
 export default plugin;
