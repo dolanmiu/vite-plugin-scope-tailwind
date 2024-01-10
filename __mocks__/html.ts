@@ -1,6 +1,6 @@
 export const HTML = `
 <div id="react-checkout-app" class="fixed top-40 h-[calc(100dvh-var(--spacing-5))] w-full rounded-4 bg-white md:w-[700px] md:px-32">
-    <header class="sticky top-0 z-10 flex items-center justify-between bg-white pr-[10px] md:pt-16">
+    <header class="sticky top-0 z-10 flex items-center justify-between bg-white pr-[10px] md:pt-16 px-3.5">
         <button class="nav before:back" tabindex="0"></button>
         <button class="nav after:exit" tabindex="1">Test</button>
     </header>

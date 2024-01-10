@@ -1,4 +1,5 @@
 import { AcceptedPlugin } from "postcss";
+import { isTailwindEdgeCase, splitClassNames } from "./tailwind-edgecases";
 /**
  * Determine if class passes test
  *
@@ -7,7 +8,7 @@ import { AcceptedPlugin } from "postcss";
  */
 const classMatchesTest = (
   cssClass: string,
-  test: RegExp | RegExp[] | string | string[],
+  test: RegExp | RegExp[] | string | string[]
 ): boolean => {
   cssClass = cssClass.trim();
 
@@ -57,8 +58,7 @@ export const prefixPlugin = ({
           if (selector.indexOf(".") !== 0) {
             return selector;
           }
-
-          var classes = selector.split(".");
+          var classes = splitClassNames(selector)
 
           return classes
             .map((cssClass) => {

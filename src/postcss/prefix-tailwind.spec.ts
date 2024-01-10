@@ -35,6 +35,25 @@ describe("prefixPlugin", () => {
     });
   });
 
+  it("should work for tailwind classes with . (dot)", async () => {
+    const output = prefixPlugin({
+      prefix: "test.",
+      ignore: [],
+    });
+
+    const walkRules = vi.fn().mockImplementation((fn) => {
+      const input = {
+        selectors: [`.px-3\\.5`],
+      };
+      expect(fn(input)).toEqual(undefined);
+      expect(input.selectors).toEqual([`.test.px-3\\.5`]);
+    });
+
+    (output as any).Root({
+      walkRules,
+    });
+  });
+
   test.each([{ ignore: [/sb-/] }, { ignore: /sb-/ }])(
     "should ignore classes with Regex",
     ({ ignore }) => {
