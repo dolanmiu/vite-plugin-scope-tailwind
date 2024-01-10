@@ -9,7 +9,7 @@ import { PREFLIGHT_AFFECTED_TAGS } from "./preflight";
  */
 const classMatchesTest = (
   cssClass: string,
-  test: RegExp | RegExp[] | string | string[]
+  test: RegExp | RegExp[] | string | string[],
 ): boolean => {
   cssClass = cssClass.trim();
 
@@ -59,7 +59,7 @@ export const prefixPlugin = ({
           if (selector.indexOf(".") !== 0) {
             // Fix for preflight reset
             if (PREFLIGHT_AFFECTED_TAGS.has(selector)) {
-              return selector + "." + prefix;
+              return selector + "." + prefix.replace(".", "");
             }
             return selector;
           }
