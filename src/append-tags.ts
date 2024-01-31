@@ -8,17 +8,19 @@ export const appendTagsForReact = (id: string) => (code: string) => {
     const matches = [...currCode.matchAll(regex)].map((m) => m[0]);
 
     for (const match of matches) {
-      const output = appendClassForReact(id)(match);
+      const regex = new RegExp(`"${tag}", ({(?:.|\\s)+?})+?`, "i");
 
-      if (output.code === match) {
+      const [obj] = [...(currCode.match(regex) ?? [])];
+      if (obj.includes("className")) {
+        const output = appendClassForReact(id)(match);
+        currCode = currCode.replace(match, output.code);
+      } else {
         // That means that className is not present
         // We need to add it
         currCode = currCode.replace(
           match,
           match.replace(`, {`, `, {\nclassName: "${id}",`),
         );
-      } else {
-        currCode = currCode.replace(match, output.code);
       }
     }
   }
@@ -32,21 +34,23 @@ export const appendTagsForReact = (id: string) => (code: string) => {
 export const appendTags = (id: string) => (code: string) => {
   let currCode = code;
   for (const tag of PREFLIGHT_AFFECTED_TAGS) {
-    const regex = new RegExp(`<${tag}.*>[^<]*</${tag}>`, "g");
+    const regex = new RegExp(`<${tag}(?:.|\\s)*?>[^<]*</${tag}>`, "g");
     const matches = [...currCode.matchAll(regex)].map((m) => m[0]);
 
     for (const match of matches) {
-      const output = appendClass(id)(match);
-
-      if (output.code === match) {
+      const [obj] = [
+        ...(currCode.match(new RegExp(`<${tag}(?:.|\\s)*?>`, "i")) ?? []),
+      ];
+      if (obj.includes("class")) {
+        const output = appendClass(id)(match);
+        currCode = currCode.replace(match, output.code);
+      } else {
         // That means that className is not present
         // We need to add it
         currCode = currCode.replace(
           match,
           match.replace(`<${tag}`, `<${tag} class="${id}"`),
         );
-      } else {
-        currCode = currCode.replace(match, output.code);
       }
     }
   }

@@ -16,6 +16,9 @@ export const HTML = `
             <div class="bg-gray rounded-8 enter-anim p-24" style="animation-delay: 200ms; position: relative;"></div>
             <div class="bg-gray rounded-8 enter-anim p-24" style="animation-delay: 300ms; position: relative;"></div>
         </div>
+        <ol>
+            <li class="test">test</li>
+        </ol>
     </main>
 </div>
 `;

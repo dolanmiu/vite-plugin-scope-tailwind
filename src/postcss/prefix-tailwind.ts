@@ -1,6 +1,6 @@
 import { AcceptedPlugin } from "postcss";
-import { splitClassNames } from "./tailwind-edgecases";
 import { PREFLIGHT_AFFECTED_TAGS } from "./preflight";
+import { splitClassNames } from "./tailwind-edgecases";
 /**
  * Determine if class passes test
  *

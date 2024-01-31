@@ -14,6 +14,22 @@ const TestComponent = ({ isOpen, onClose, onDone }) => {
 export { TestComponent };
 `;
 
+export const COMPILED_NESTED_TAG_JSX = `
+import { Fragment, jsx } from "react/jsx-runtime";
+import { useState } from "react";
+
+const TestComponent = ({ isOpen, onClose, onDone }) => {
+  const [state, setState] = useState(
+    void 0
+  );
+  const [description, setDescription] = useState("");
+  return /* @__PURE__ */ jsx("ol", { id: "modal-root", children: [{
+    className: "flex"
+  }] });
+};
+export { TestComponent };
+`;
+
 export const COMPILED_BACK_TICK_JSX = `
 import { Fragment, jsx } from "react/jsx-runtime";
 import { useState } from "react";
