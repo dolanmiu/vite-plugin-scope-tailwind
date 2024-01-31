@@ -1,7 +1,7 @@
-import { defineConfig } from "vitest/config";
 import { resolve } from "path";
-import tsConfigPaths from "vite-tsconfig-paths";
 import dts from "vite-plugin-dts";
+import tsConfigPaths from "vite-tsconfig-paths";
+import { defineConfig } from "vitest/config";
 
 export default defineConfig({
   plugins: [
@@ -38,10 +38,10 @@ export default defineConfig({
       reportsDirectory: "coverage",
       enabled: true,
       reporter: ["text", "cobertura", "html"],
-      statements: 86.06,
-      branches: 93.75,
-      functions: 80.0,
-      lines: 86.06,
+      statements: 91.21,
+      branches: 96.55,
+      functions: 91.66,
+      lines: 91.21,
       exclude: ["**/src/test/**", "**/*.test.{ts,tsx}"],
     },
     reporters: ["default"],
