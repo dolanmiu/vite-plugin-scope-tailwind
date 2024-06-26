@@ -1,12 +1,12 @@
-import { Plugin } from "vite";
 import path from "path";
 import { AcceptedPlugin } from "postcss";
 import uniqid from "uniqid";
+import { Plugin } from "vite";
 
-import { getPostCssConfig, postCssPluginsToArray } from "./get-postcss-config";
-import { prefixPlugin } from "./postcss/prefix-tailwind";
 import { appendClass, appendClassForReact } from "./append-classes";
 import { appendTags, appendTagsForReact } from "./append-tags";
+import { getPostCssConfig, postCssPluginsToArray } from "./get-postcss-config";
+import { prefixPlugin } from "./postcss/prefix-tailwind";
 
 const id = uniqid("d");
 
@@ -40,7 +40,7 @@ const plugin = ({
           plugins: [
             ...currentPostCssPlugins,
             ...postCssPluginsToArray(postCssConfigFile).map((f) =>
-              require(path.join(process.cwd(), "node_modules", f)),
+              require(path.join(process.cwd(), "node_modules", f))
             ),
             prefixPlugin({ prefix: `${id}.`, ignore }),
           ],
