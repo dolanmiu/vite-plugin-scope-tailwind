@@ -13,7 +13,7 @@ describe("persistTailwindClassNames", () => {
 
     persistTailwindClassNames(["[&:not(:first-child)]:border-t"]);
     expect(getTailwindClassNames()).toEqual(
-      new Set(["test", "[&:not(:first-child)]:border-t"])
+      new Set(["test", "[&:not(:first-child)]:border-t"]),
     );
   });
 });
