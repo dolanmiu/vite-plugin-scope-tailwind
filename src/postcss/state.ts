@@ -9,10 +9,10 @@ export const persistTailwindClassNames = (classes: string[]): void => {
     }
 
     const unEscaped = item.replace(/\\/gi, "");
-
     if (unEscaped.startsWith("[")) {
+      const matches = [...unEscaped.matchAll(/(\[.+?\]:.+?):/g)];
       const [[_, match = unEscaped]] = [
-        ...unEscaped.matchAll(/(\[.+?\]:.+?):/g),
+        ...(matches.length > 0 ? matches : [[]]),
       ];
       globalState.tailwindClassNames.add(match);
       globalState.tailwindClassNames.add(item);

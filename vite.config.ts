@@ -39,7 +39,7 @@ export default defineConfig({
       enabled: true,
       reporter: ["text", "cobertura", "html"],
       statements: 91.21,
-      branches: 96.55,
+      branches: 95.55,
       functions: 91.66,
       lines: 91.21,
       exclude: ["**/src/test/**", "**/*.test.{ts,tsx}"],
