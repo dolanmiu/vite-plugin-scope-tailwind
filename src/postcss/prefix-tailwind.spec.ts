@@ -1,4 +1,4 @@
-import { describe, it, expect, vi, test } from "vitest";
+import { describe, expect, it, test, vi } from "vitest";
 
 import { prefixPlugin } from "./prefix-tailwind";
 
@@ -18,7 +18,7 @@ describe("prefixPlugin", () => {
 
   it("should walk and prefix selectors", async () => {
     const output = prefixPlugin({
-      prefix: "test.",
+      prefix: "test",
       ignore: [],
     });
 
@@ -27,7 +27,7 @@ describe("prefixPlugin", () => {
         selectors: [".test-class"],
       };
       expect(fn(input)).toEqual(undefined);
-      expect(input.selectors).toEqual([".test.test-class"]);
+      expect(input.selectors).toEqual([".test-test-class"]);
     });
 
     (output as any).Root({
@@ -37,7 +37,7 @@ describe("prefixPlugin", () => {
 
   it("should work for tailwind classes with . (dot)", async () => {
     const output = prefixPlugin({
-      prefix: "test.",
+      prefix: "test",
       ignore: [],
     });
 
@@ -46,7 +46,7 @@ describe("prefixPlugin", () => {
         selectors: [`.px-3\\.5`],
       };
       expect(fn(input)).toEqual(undefined);
-      expect(input.selectors).toEqual([`.test.px-3\\.5`]);
+      expect(input.selectors).toEqual([`.test-px-3\\.5`]);
     });
 
     (output as any).Root({
@@ -58,7 +58,7 @@ describe("prefixPlugin", () => {
     "should ignore classes with Regex",
     ({ ignore }) => {
       const output = prefixPlugin({
-        prefix: "test.",
+        prefix: "test",
         ignore,
       });
 
@@ -67,13 +67,13 @@ describe("prefixPlugin", () => {
           selectors: [".sb-test-class", ".test-class"],
         };
         expect(fn(input)).toEqual(undefined);
-        expect(input.selectors).toEqual([".sb-test-class", ".test.test-class"]);
+        expect(input.selectors).toEqual([".sb-test-class", ".test-test-class"]);
       });
 
       (output as any).Root({
         walkRules,
       });
-    },
+    }
   );
 
   test.each([{ ignore: ["ignore"] }, { ignore: "ignore" }])(
@@ -95,7 +95,7 @@ describe("prefixPlugin", () => {
       (output as any).Root({
         walkRules,
       });
-    },
+    }
   );
 
   it("should return false if there are no selectors", async () => {

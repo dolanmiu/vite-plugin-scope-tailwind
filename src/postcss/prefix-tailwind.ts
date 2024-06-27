@@ -1,6 +1,8 @@
 import { AcceptedPlugin } from "postcss";
 import { PREFLIGHT_AFFECTED_TAGS } from "./preflight";
+import { persistTailwindClassNames } from "./state";
 import { splitClassNames } from "./tailwind-edgecases";
+
 /**
  * Determine if class passes test
  *
@@ -9,7 +11,7 @@ import { splitClassNames } from "./tailwind-edgecases";
  */
 const classMatchesTest = (
   cssClass: string,
-  test: RegExp | RegExp[] | string | string[],
+  test: RegExp | RegExp[] | string | string[]
 ): boolean => {
   cssClass = cssClass.trim();
 
@@ -45,6 +47,11 @@ export const prefixPlugin = ({
   prefix: string;
   ignore: RegExp | RegExp[] | string | string[];
 }): AcceptedPlugin => {
+  // From 'foo.' to 'foo'
+  // This '.' is added further up the chain
+  // TODO: make all prefixes clean
+  const cleanPrefix = prefix.replace(".", "");
+
   return {
     postcssPlugin: "prefix-tailwind-classes",
 
@@ -55,16 +62,22 @@ export const prefixPlugin = ({
         }
 
         rule.selectors = rule.selectors.map((selector) => {
-          // Is class selector
+          // Is tag selector
           if (selector.indexOf(".") !== 0) {
+            // Need this so that the library's preflight reset doesn't affect the outside app
+            // This still allows the outside app to affect the library's tags, but that's ok, there is no way around that
+            // This is because a h1 tag is the same in all cases.
             // Fix for preflight reset
             if (PREFLIGHT_AFFECTED_TAGS.has(selector)) {
-              return selector + "." + prefix.replace(".", "");
+              return selector + "." + cleanPrefix;
             }
             return selector;
           }
 
+          // Is class selector
           var classes = splitClassNames(selector);
+
+          persistTailwindClassNames(classes);
 
           return classes
             .map((cssClass) => {
@@ -74,7 +87,7 @@ export const prefixPlugin = ({
               ) {
                 return cssClass;
               }
-              return prefix + cssClass;
+              return `${cleanPrefix}-${cssClass}`;
             })
             .join(".");
         });
