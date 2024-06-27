@@ -27,13 +27,13 @@ describe("appendIdWithQuotesInMind", () => {
 
   it("should work for single quotes at the front and end", () => {
     expect(appendIdWithQuotesInMind(`'test'`, "prefix")).toEqual(
-      `'prefix-test'`
+      `'prefix-test'`,
     );
   });
 
   it("should work for double quotes at the front and end", () => {
     expect(appendIdWithQuotesInMind(`"test"`, "prefix")).toEqual(
-      `"prefix-test"`
+      `"prefix-test"`,
     );
   });
 });

@@ -30,7 +30,7 @@ export const transformClasses = ({
       `${classIdentifier}: "${classes
         .split(" ")
         .map((c) => appendClassWithId(c, id))
-        .join(" ")}"`
+        .join(" ")}"`,
     );
   }
   return c;
@@ -54,7 +54,7 @@ export const tildeTransformClasses = ({
       `${classIdentifier}: \`${classes
         .split(" ")
         .map((c) => appendClassWithId(c, id))
-        .join(" ")}\``
+        .join(" ")}\``,
     );
   }
   return c;

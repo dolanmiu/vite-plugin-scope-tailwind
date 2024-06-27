@@ -73,7 +73,7 @@ describe("prefixPlugin", () => {
       (output as any).Root({
         walkRules,
       });
-    }
+    },
   );
 
   test.each([{ ignore: ["ignore"] }, { ignore: "ignore" }])(
@@ -95,7 +95,7 @@ describe("prefixPlugin", () => {
       (output as any).Root({
         walkRules,
       });
-    }
+    },
   );
 
   it("should return false if there are no selectors", async () => {

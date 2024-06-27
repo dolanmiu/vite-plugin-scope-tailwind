@@ -40,7 +40,7 @@ const plugin = ({
           plugins: [
             ...currentPostCssPlugins,
             ...postCssPluginsToArray(postCssConfigFile).map((f) =>
-              require(path.join(process.cwd(), "node_modules", f))
+              require(path.join(process.cwd(), "node_modules", f)),
             ),
             prefixPlugin({ prefix: id, ignore }),
           ],
