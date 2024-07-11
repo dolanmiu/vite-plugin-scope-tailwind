@@ -13,7 +13,7 @@ describe("persistTailwindClassNames", () => {
 
     persistTailwindClassNames(["[&:not(:first-child)]:border-t"]);
     expect(getTailwindClassNames()).toEqual(
-      new Set(["test", "[&:not(:first-child)]:border-t"])
+      new Set(["test", "[&:not(:first-child)]:border-t"]),
     );
 
     persistTailwindClassNames(["focus\\:outline-none:focus"]);
@@ -23,7 +23,7 @@ describe("persistTailwindClassNames", () => {
         "[&:not(:first-child)]:border-t",
         "focus:outline-none",
         "focus:outline-none:focus",
-      ])
+      ]),
     );
 
     persistTailwindClassNames(["focus\\:ring-0"]);
@@ -34,7 +34,7 @@ describe("persistTailwindClassNames", () => {
         "focus:outline-none",
         "focus:outline-none:focus",
         "focus:ring-0",
-      ])
+      ]),
     );
   });
 });
