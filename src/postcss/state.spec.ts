@@ -15,5 +15,15 @@ describe("persistTailwindClassNames", () => {
     expect(getTailwindClassNames()).toEqual(
       new Set(["test", "[&:not(:first-child)]:border-t"]),
     );
+
+    persistTailwindClassNames(["focus\\:outline-none:focus"]);
+    expect(getTailwindClassNames()).toEqual(
+      new Set([
+        "test",
+        "[&:not(:first-child)]:border-t",
+        "focus:outline-none",
+        "focus:outline-none:focus",
+      ]),
+    );
   });
 });
