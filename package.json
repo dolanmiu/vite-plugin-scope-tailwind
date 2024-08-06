@@ -3,7 +3,7 @@
   "description": "A vite-plugin to encapsulate and scope your TailwindCSS styles to your library and prevent them affecting styles outside",
   "version": "2.0.1",
   "main": "./dist/cjs/index.cjs",
-  "types": "./dist/main.d.ts",
+  "types": "./dist/src/main.d.ts",
   "files": [
     "dist"
   ],
