@@ -62,3 +62,33 @@ export const TestComponent = () => {
   });
 };
 `;
+
+export const COMPILED_FORM = `
+import { jsx } from "react/jsx-runtime";
+import { FormProvider, useForm } from "react-hook-form";
+export const Form = ({
+  onSubmit,
+  props: formElementProps,
+  formRef,
+  ref = formRef,
+  children,
+  ...restProps
+}) => {
+  const methods = useForm({
+    mode: "onChange",
+    // This is needed for progressive disclosures to work. It un-registers fields on unmount.
+    shouldUnregister: true,
+    ...restProps
+  });
+  return /* @__PURE__ */ jsx(FormProvider, { ...methods, children: /* @__PURE__ */ jsx(
+    "form",
+    {
+      className: "flex flex-col",
+      onSubmit: methods.handleSubmit(onSubmit),
+      ref,
+      ...formElementProps,
+      children
+    }
+  ) });
+};
+`;

@@ -1,4 +1,4 @@
-import { describe, it, expect, vi } from "vitest";
+import { describe, expect, it, vi } from "vitest";
 
 import plugin from "./main";
 
@@ -9,9 +9,11 @@ describe("plugin", () => {
   it("should work", async () => {
     const output = plugin({});
 
-    expect(output).toContain({
-      name: "vite-plugin-scope-tailwind",
-    });
+    expect(output).toEqual(
+      expect.objectContaining({
+        name: "vite-plugin-scope-tailwind",
+      }),
+    );
   });
 
   it("should work for react", async () => {
@@ -19,8 +21,10 @@ describe("plugin", () => {
       react: true,
     });
 
-    expect(output).toContain({
-      name: "vite-plugin-scope-tailwind",
-    });
+    expect(output).toEqual(
+      expect.objectContaining({
+        name: "vite-plugin-scope-tailwind",
+      }),
+    );
   });
 });

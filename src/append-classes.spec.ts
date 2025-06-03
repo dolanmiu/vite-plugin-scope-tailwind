@@ -1,6 +1,10 @@
-import { describe, it, expect } from "vitest";
+import { describe, expect, it } from "vitest";
 
-import { COMPILED_JSX, COMPILED_BACK_TICK_JSX } from "@/mocks/compiled-jsx";
+import {
+  COMPILED_BACK_TICK_JSX,
+  COMPILED_FORM,
+  COMPILED_JSX,
+} from "@/mocks/compiled-jsx";
 import { HTML } from "@/mocks/html";
 
 import { appendClass, appendClassForReact } from "./append-classes";
@@ -9,6 +13,15 @@ describe("append-classes", () => {
   describe("appendClassForReact", () => {
     it("should work", async () => {
       const transformedCode = appendClassForReact("test-id")(COMPILED_JSX);
+      expect(transformedCode).toEqual(
+        expect.objectContaining({
+          code: expect.stringContaining(`className: "test-id `),
+        }),
+      );
+    });
+
+    it("should work with forms", async () => {
+      const transformedCode = appendClassForReact("test-id")(COMPILED_FORM);
       expect(transformedCode).toEqual(
         expect.objectContaining({
           code: expect.stringContaining(`className: "test-id `),
