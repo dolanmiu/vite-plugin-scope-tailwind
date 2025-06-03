@@ -3,6 +3,8 @@ import { PREFLIGHT_AFFECTED_TAGS } from "./preflight";
 import { persistTailwindClassNames } from "./state";
 import { splitClassNames } from "./tailwind-edgecases";
 
+import { syncWait } from "../util/sync-wait";
+
 /**
  * Determine if class passes test
  *
@@ -76,6 +78,10 @@ export const prefixPlugin = ({
 
           // Is class selector
           var classes = splitClassNames(selector);
+
+          // This is necessary because there is a race condition where the PostCSS plugin runs before the vite transform step!
+          // Since they're two separate plugins, it is unclear how to figure out when Vite's transform finishes. So a simple wait is added for now until we have a better idea
+          syncWait(2000);
 
           persistTailwindClassNames(classes);
 

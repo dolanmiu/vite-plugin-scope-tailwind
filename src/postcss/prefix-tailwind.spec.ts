@@ -2,6 +2,10 @@ import { describe, expect, it, test, vi } from "vitest";
 
 import { prefixPlugin } from "./prefix-tailwind";
 
+vi.mock("../util/sync-wait", () => ({
+  syncWait: vi.fn(),
+}));
+
 describe("prefixPlugin", () => {
   it("should work", async () => {
     expect(true).toEqual(true);
@@ -13,7 +17,9 @@ describe("prefixPlugin", () => {
       ignore: [],
     });
 
-    expect(output).toContain({ postcssPlugin: "prefix-tailwind-classes" });
+    expect(output).toEqual(
+      expect.objectContaining({ postcssPlugin: "prefix-tailwind-classes" }),
+    );
   });
 
   it("should walk and prefix selectors", async () => {
