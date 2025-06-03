@@ -3,6 +3,8 @@ import { PREFLIGHT_AFFECTED_TAGS } from "./preflight";
 import { persistTailwindClassNames } from "./state";
 import { splitClassNames } from "./tailwind-edgecases";
 
+import { syncWait } from "../util/sync-wait";
+
 /**
  * Determine if class passes test
  *
@@ -38,12 +40,6 @@ const classMatchesTest = (
   // This will never happen so it is safe to ignore
   // Deleting it will change the return type of the function
   return cssClass === test;
-};
-
-// Inspired by: https://stackoverflow.com/questions/6921895/synchronous-delay-in-code-execution
-const syncWait = (ms: number) => {
-  const end = Date.now() + ms;
-  while (Date.now() < end) continue;
 };
 
 export const prefixPlugin = ({
